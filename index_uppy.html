@@ -5,13 +5,10 @@
 </head>
 <body>
   <h1>Unggah File dengan Uppy</h1>
-  <!-- Tambahkan elemen untuk Uppy -->
   <div id="uppy"></div>
-  <div id="result"></div> <!-- Elemen untuk menampilkan link file -->
-
+  <div id="result"></div>
   
   <script>
-    // Inisialisasi Uppy pada elemen dengan id uppy
     const uppy = Uppy.Core({
       restrictions: {
         maxNumberOfFiles: 1,
@@ -26,7 +23,6 @@
 
     uppy.on('complete', (result) => {
       document.getElementById('result').innerText = 'File berhasil diunggah.';
-      // Tampilkan link file setelah unggahan berhasil
       const fileUrl = result.successful[0].uploadURL;
       const link = document.createElement('a');
       link.href = fileUrl;

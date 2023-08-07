@@ -10,34 +10,30 @@
     <input type="submit" value="Upload">
   </form>
   
-  <div id="result"></div> <!-- Elemen untuk menampilkan pesan hasil unggahan -->
-  <div id="file-link"></div> <!-- Elemen untuk menampilkan tautan file yang diunggah -->
+  <div id="result"></div>
+  <div id="file-link"></div> 
 
   <script>
-    // Tangkap elemen form, elemen hasil, dan elemen tautan file
     const form = document.querySelector('form');
     const resultDiv = document.getElementById('result');
     const fileLinkDiv = document.getElementById('file-link');
 
-    // Saat formulir dikirimkan, lakukan tindakan berikut
     form.addEventListener('submit', async (event) => {
-      event.preventDefault(); // Mencegah form dari pengiriman biasa
+      event.preventDefault(); 
 
-      const formData = new FormData(form); // Buat objek FormData untuk mengirim file
+      const formData = new FormData(form);
       const response = await fetch(form.action, {
         method: 'POST',
         body: formData,
       });
 
       if (response.ok) {
-        // Jika unggahan berhasil, tampilkan pesan berhasil dan tautan file
         resultDiv.innerText = 'File berhasil diunggah.';
-        const responseData = await response.json(); // Anggap server mengembalikan URL file
+        const responseData = await response.json();
         fileLinkDiv.innerHTML = `<a href="${responseData.fileUrl}" target="_blank">Tautan ke File</a>`;
       } else {
-        // Jika unggahan gagal, tampilkan pesan gagal
         resultDiv.innerText = 'Terjadi kesalahan saat mengunggah file.';
-        fileLinkDiv.innerHTML = ''; // Hapus tautan jika unggahan gagal
+        fileLinkDiv.innerHTML = '';
       }
     });
   </script>

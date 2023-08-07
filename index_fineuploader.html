@@ -10,16 +10,10 @@
 </head>
 <body>
   <h1>Unggah File dengan Fine Uploader</h1>
-  <!-- Tambahkan elemen untuk Fine Uploader -->
   <div id="fine-uploader"></div>
-  <div id="result"></div> <!-- Elemen untuk menampilkan link file -->
+  <div id="result"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  
-  
-
-
   <script>
-    // Inisialisasi Fine Uploader pada elemen dengan id fine-uploader
     $('#fine-uploader').fineUploader({
       request: {
         endpoint: '/upload',
@@ -27,7 +21,6 @@
       callbacks: {
         onComplete: (id, name, response) => {
           document.getElementById('result').innerText = 'File berhasil diunggah.';
-          // Tampilkan link file setelah unggahan berhasil
           const fileUrl = response.fileUrl;
           const link = document.createElement('a');
           link.href = fileUrl;

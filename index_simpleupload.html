@@ -5,7 +5,6 @@
 </head>
 <body>
   <h1>Unggah File dengan SimpleUpload.js</h1>
-  <!-- Tambahkan elemen input file dan tombol unggah -->
   <input type="file" id="fileInput">
   <button onclick="uploadFile()">Unggah</button>
   <div id="result"></div>
@@ -36,7 +35,6 @@
         },
         success: (response) => {
           document.getElementById('result').innerText = 'File berhasil diunggah.';
-          // Tampilkan link file setelah unggahan berhasil
           const fileUrl = response.fileUrl;
           const link = document.createElement('a');
           link.href = fileUrl;

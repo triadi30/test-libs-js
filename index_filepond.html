@@ -10,26 +10,21 @@
 
   <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
   <script>
-    // Inisialisasi FilePond pada elemen input file
     const inputElement = document.getElementById('filePondInput');
     const pond = FilePond.create(inputElement);
-
-    // Atur opsi FilePond sesuai kebutuhan
     FilePond.setOptions({
       server: {
         process: {
-          url: '/upload/filepond', // Ganti dengan URL endpoint server Anda untuk mengelola proses unggahan
+          url: '/upload/filepond',
           method: 'POST',
           headers: {
             'X-Requested-With': 'XMLHttpRequest'
           },
           onload: (response) => {
-            // Server harus mengembalikan URL file yang benar dalam response
             const data = JSON.parse(response);
             const fileUrl = data.fileUrl;
 
             document.getElementById('result').innerText = 'File berhasil diunggah.';
-            // Tampilkan link file setelah unggahan berhasil
             const link = document.createElement('a');
             link.href = fileUrl;
             link.innerHTML = 'Link file';
